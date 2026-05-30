@@ -273,6 +273,16 @@ img {
   margin-top: 0.75em;
 }
 
+.artikel-framing {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: #555;
+  margin-top: 0.85em;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--kleur-rand);
+  line-height: 1.55;
+}
+
 .artikel-bronnen {
   margin-top: 1rem;
   padding-top: 0.6rem;
