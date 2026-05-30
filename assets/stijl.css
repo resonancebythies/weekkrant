@@ -1,0 +1,633 @@
+/* De Weekkrant — Krantenopmaak
+   Klassieke typografie, meerkoloms layout, responsive
+   Gedeeld door alle edities — pad: assets/stijl.css */
+
+/* ─── Variabelen ──────────────────────────────────────────── */
+
+:root {
+  --kleur-papier:      #faf8f3;
+  --kleur-tekst:       #1a1a1a;
+  --kleur-krant-kop:   #0d1b2a;
+  --kleur-accent:      #8b1a1a;
+  --kleur-rand:        #c8bfa8;
+  --kleur-rand-zwaar:  #0d1b2a;
+  --kleur-beschouwing: #f0ece0;
+  --kleur-signalering: #f5f3ee;
+  --kleur-nav-bg:      #0d1b2a;
+  --kleur-nav-tekst:   #e8e0d0;
+
+  --font-serif:  Georgia, "Times New Roman", serif;
+  --font-sans:   system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  --breedte-max: 1240px;
+  --ruimte-sectie: 3rem;
+  --ruimte-artikel: 1.5rem;
+}
+
+/* ─── Reset & basis ───────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--kleur-papier);
+  color: var(--kleur-tekst);
+  font-family: var(--font-serif);
+  line-height: 1.65;
+}
+
+a {
+  color: var(--kleur-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── Container ───────────────────────────────────────────── */
+
+.container {
+  max-width: var(--breedte-max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ─── Krantenkop (masthead) ───────────────────────────────── */
+
+.krantenkop {
+  background-color: var(--kleur-krant-kop);
+  color: #fff;
+  padding: 1.75rem 0 1.25rem;
+  border-bottom: 4px solid var(--kleur-accent);
+}
+
+.krantenkop-inner {
+  max-width: var(--breedte-max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 1rem;
+}
+
+.krantenkop-naam {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #fff;
+}
+
+.krantenkop-meta {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  text-align: right;
+  color: var(--kleur-nav-tekst);
+  line-height: 1.6;
+}
+
+.krantenkop-meta a {
+  color: var(--kleur-rand);
+}
+
+.krantenkop-meta a:hover {
+  color: #fff;
+}
+
+.krantenkop-lijn {
+  max-width: var(--breedte-max);
+  margin: 1.25rem auto 0;
+  padding: 0 1.25rem;
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.krantenkop-editie {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kleur-nav-tekst);
+  opacity: 0.8;
+}
+
+/* ─── Rubrieknavigatie ────────────────────────────────────── */
+
+.rubriek-nav {
+  background-color: var(--kleur-nav-bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--kleur-accent);
+}
+
+.rubriek-nav-inner {
+  max-width: var(--breedte-max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.rubriek-nav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.rubriek-nav a {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--kleur-nav-tekst);
+  padding: 0.75rem 0.9rem;
+  white-space: nowrap;
+  transition: background-color 0.15s, color 0.15s;
+  display: block;
+}
+
+.rubriek-nav a:hover,
+.rubriek-nav a:focus {
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ─── Hoofd layout ────────────────────────────────────────── */
+
+.krant-main {
+  max-width: var(--breedte-max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ─── Sectiekop ───────────────────────────────────────────── */
+
+.sectie {
+  margin-top: var(--ruimte-sectie);
+  padding-top: 1rem;
+  border-top: 3px solid var(--kleur-rand-zwaar);
+}
+
+.sectie:first-child {
+  border-top: none;
+}
+
+.sectie-kop {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kleur-accent);
+  margin-bottom: 1.5rem;
+}
+
+/* ─── Artikelgrid ─────────────────────────────────────────── */
+
+.artikel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ruimte-artikel);
+  align-items: start;
+}
+
+.artikel-grid--twee-koloms {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ─── Artikel (regulier) ──────────────────────────────────── */
+
+.artikel {
+  border-top: 1px solid var(--kleur-rand);
+  padding-top: 1rem;
+}
+
+.artikel + .artikel {
+  padding-top: 1rem;
+}
+
+.artikel-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kleur-accent);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.artikel-titel {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+  color: var(--kleur-tekst);
+}
+
+.artikel-lead {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #444;
+  margin-bottom: 0.85rem;
+  line-height: 1.55;
+}
+
+.artikel-foto {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+}
+
+.artikel-body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.artikel-body p + p {
+  margin-top: 0.75em;
+}
+
+.artikel-bronnen {
+  margin-top: 1rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--kleur-rand);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: #666;
+}
+
+.artikel-bronnen strong {
+  font-weight: 600;
+  color: #444;
+}
+
+.artikel-bronnen a {
+  color: #555;
+  margin-right: 0.4rem;
+}
+
+.artikel-bronnen a:hover {
+  color: var(--kleur-accent);
+}
+
+/* ─── Hoofdartikel ────────────────────────────────────────── */
+
+.hoofdartikel-sectie {
+  border-top: none;
+  margin-top: 2rem;
+}
+
+.hoofdartikel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--kleur-rand);
+}
+
+.hoofdartikel-media {
+  position: relative;
+}
+
+.hoofdartikel-foto {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+}
+
+.hoofdartikel-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hoofdartikel-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kleur-accent);
+  margin-bottom: 0.5rem;
+}
+
+.hoofdartikel-titel {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.hoofdartikel-lead {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #444;
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+.hoofdartikel .artikel-body {
+  font-size: 1rem;
+}
+
+.hoofdartikel .artikel-body p + p {
+  margin-top: 0.8em;
+}
+
+/* Wanneer geen foto beschikbaar: full-width tekst */
+.hoofdartikel--zonder-foto {
+  grid-template-columns: 1fr;
+}
+
+.hoofdartikel--zonder-foto .hoofdartikel-titel {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+/* ─── Signalering ─────────────────────────────────────────── */
+
+.signalering-sectie {
+  background-color: var(--kleur-signalering);
+  padding: 1.5rem;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+  padding-left: calc(1.25rem + 1.5rem);
+  padding-right: calc(1.25rem + 1.5rem);
+  border-top-color: var(--kleur-rand-zwaar);
+}
+
+.signalering-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.signalering-item {
+  border-top: 1px solid var(--kleur-rand);
+  padding-top: 0.75rem;
+}
+
+.signalering-item h4 {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  line-height: 1.3;
+}
+
+.signalering-item p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #333;
+}
+
+.signalering-item .signalering-bron {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  color: #666;
+  margin-top: 0.35rem;
+  display: inline-block;
+}
+
+/* ─── Beschouwing ─────────────────────────────────────────── */
+
+.beschouwing-sectie {
+  background-color: var(--kleur-beschouwing);
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+  padding: 2rem calc(1.25rem + 2rem);
+  margin-top: var(--ruimte-sectie);
+  border-top: 3px solid var(--kleur-rand-zwaar);
+}
+
+.beschouwing-kop {
+  font-size: 0.7rem;
+}
+
+.beschouwing-intro {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  margin-top: -0.75rem;
+}
+
+.beschouwing-onderwerpen {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--kleur-accent);
+  background: rgba(255,255,255,0.5);
+}
+
+.beschouwing-lenzen {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  max-width: 800px;
+}
+
+.lens {
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--kleur-rand);
+}
+
+.lens:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.lens h3 {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kleur-accent);
+  margin-bottom: 0.6rem;
+}
+
+.lens p {
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+
+/* ─── Archiefpagina ───────────────────────────────────────── */
+
+.archief-main {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.archief-lijst {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 1.5rem;
+  max-width: 700px;
+}
+
+.archief-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.25rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--kleur-rand);
+}
+
+.archief-datum {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.archief-link-titel {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.archief-samenvatting {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 0.2rem;
+  line-height: 1.5;
+}
+
+.archief-leeg {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: #888;
+  padding: 2rem 0;
+}
+
+/* ─── Footer ──────────────────────────────────────────────── */
+
+.krant-footer {
+  border-top: 2px solid var(--kleur-rand-zwaar);
+  margin-top: var(--ruimte-sectie);
+  padding: 1.5rem 1.25rem;
+  max-width: var(--breedte-max);
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: #888;
+  text-align: center;
+}
+
+.krant-footer a {
+  color: #666;
+}
+
+/* ─── Responsive — tablet ─────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .krantenkop-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .krantenkop-meta {
+    text-align: left;
+  }
+
+  .hoofdartikel {
+    grid-template-columns: 1fr;
+  }
+
+  .hoofdartikel-foto {
+    height: 240px;
+  }
+
+  .artikel-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .signalering-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ─── Responsive — mobiel ─────────────────────────────────── */
+
+@media (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+
+  .artikel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .artikel-grid--twee-koloms {
+    grid-template-columns: 1fr;
+  }
+
+  .signalering-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rubriek-nav a {
+    font-size: 0.7rem;
+    padding: 0.65rem 0.7rem;
+  }
+
+  .beschouwing-sectie {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .archief-item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
+/* ─── Drukstand ───────────────────────────────────────────── */
+
+@media print {
+  .rubriek-nav {
+    display: none;
+  }
+
+  .krantenkop {
+    background: #fff;
+    color: #000;
+    border-bottom-color: #000;
+  }
+
+  .krantenkop-naam {
+    color: #000;
+  }
+}
