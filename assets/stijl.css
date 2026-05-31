@@ -381,6 +381,66 @@ img {
   font-size: clamp(2rem, 4vw, 3rem);
 }
 
+/* ─── Artikel-beschouwing (embedded per artikel) ─────────── */
+
+.artikel-beschouwing {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.25rem 0.5rem;
+  background-color: var(--kleur-beschouwing);
+  border-top: 2px solid var(--kleur-rand-zwaar);
+}
+
+.artikel-beschouwing-kop {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kleur-accent);
+  margin-bottom: 1rem;
+}
+
+.artikel-lens {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--kleur-rand);
+}
+
+.artikel-lens:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0.25rem;
+}
+
+.artikel-lens h4 {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kleur-tekst);
+  margin-bottom: 0.3rem;
+  opacity: 0.7;
+}
+
+.artikel-lens p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.artikel-lens--epistemisch {
+  border-top: 2px solid var(--kleur-rand);
+  padding-top: 0.85rem;
+  margin-top: 0.85rem;
+  border-bottom: none;
+}
+
+.artikel-lens--epistemisch h4 {
+  color: var(--kleur-accent);
+  opacity: 1;
+}
+
 /* ─── Signalering ─────────────────────────────────────────── */
 
 .signalering-sectie {
